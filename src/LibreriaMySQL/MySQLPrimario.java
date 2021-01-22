@@ -72,9 +72,7 @@ public class MySQLPrimario {
         
     }
     
-    public void agregarRegistro(String tabla,String [] columnas2, String [] contenido2){
-        String [] columnas = {"`nombre`"};
-        String [] contenido = {"'ele'"};
+    public void agregarRegistro(String tabla,String [] columnas, String [] contenido){
         EnlacePrimarioMySQL enlace = new EnlacePrimarioMySQL();
         Statement consulta;
         if(verificadorContenido(tabla) && verificadorContenido(arrayAString(contenido))){
@@ -106,7 +104,7 @@ public class MySQLPrimario {
     public void eliminarRegistro(String tabla, String columna, int numero){
         EnlacePrimarioMySQL enlace = new EnlacePrimarioMySQL();
         Statement consulta;
-        if(verificadorContenido(tabla) && verificadorContenido(tabla) && numero == 0){
+        if(verificadorContenido(tabla) && verificadorContenido(columna) && !(numero == 0)){
             try {
                 consulta = enlace.getEnlaceSQL().createStatement();
                 consulta.executeUpdate(
@@ -117,7 +115,7 @@ public class MySQLPrimario {
                                 + "` ="
                                 + numero
                 );             
-                System.out.println("restro eliminado");
+                System.out.println("registro eliminado");
                 enlace.cerrarEnlaceSQL();
             } catch (Exception e) {
                 System.err.println("---Error:---  " + e);
@@ -175,8 +173,30 @@ public class MySQLPrimario {
     
     
     public static void main (String [] args){
-        String array [] = {"ee"};
-        //new MySQLPrimario().eliminarRegistro("tabla", "np", 1);
+        String array [] = {"`np` int(12) not null auto_increment",
+            "`fecha` datetime",
+            "primary key (`np`)"};
+        MySQLPrimario ele = new MySQLPrimario();
+//        new MySQLPrimario().CreacionTabla("ejemplo3", array);
+        String columnas [] =  {"`fecha`"};
+//        String datos [] = {"now()"};
+        String datos [] = {"20200202"};
+        ele.agregarRegistro("ejemplo2", columnas, datos);
+//        String columnas [] =  {"`nombre`"};
+//        String datos [] = {"'eleuterio'"};
+//        ele.agregarRegistro("ejemplo", columnas, datos);
+//        columnas [0] =  "`nombre`";
+//        datos [0] = "'ejemplo'";
+//        ele.agregarRegistro("ejemplo", columnas, datos);
+//        columnas [0] =  "`nombre`";
+//        datos [0] = "'elizabeth'";
+//        ele.agregarRegistro("ejemplo", columnas, datos);
+//        columnas [0] =  "`nombre`";
+//        datos [0] = "'estrella'";
+//        ele.agregarRegistro("ejemplo", columnas, datos);
+//        columnas [0] =  "`nombre`";
+//        datos [0] = "'eliza'";
+//        ele.eliminarRegistro("ejemplo2", "np", 1);
         
     }
     
