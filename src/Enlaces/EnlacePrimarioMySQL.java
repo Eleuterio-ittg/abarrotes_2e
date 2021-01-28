@@ -9,7 +9,7 @@ package Enlaces;
 
 public class EnlacePrimarioMySQL {
     
-    static String baseDato = "bd_ventas";
+    static String baseDato = "abarrotes2e";
     static String usuario = "abarrotes2e";
     static String contrasena = "Abarrotes2E";
     static String url = "jdbc:mysql://localhost/";
@@ -28,7 +28,7 @@ public class EnlacePrimarioMySQL {
         
         } catch (Exception e) {
             
-            System.err.println("---Error:---  " + e);
+            System.err.println("---Error:EnlacePrimarioMySQL()---  " + e);
             
         }
         

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 public class EnlacePrimario {
     
-    static String baseDato = "bd_ventas";
+    static String baseDato = "abarrotes2e";
     static String usuario = "abarrotes2e";
     static String contrasena = "Abarrotes2E";
     static String url = "jdbc:mysql://localhost/";
